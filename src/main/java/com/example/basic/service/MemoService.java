@@ -60,7 +60,7 @@ public class MemoService {
     @Transactional
     public void deleteById(Long id) {
         Memo memo = memoRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("해당하는 메모가 없습니다.")
+                () -> new IllegalArgumentException("해당 id가 존재하지 않습니다.")
         );
         memoRepository.deleteById(id);
     }
