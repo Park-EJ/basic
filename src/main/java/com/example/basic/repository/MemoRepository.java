@@ -9,9 +9,9 @@ public interface MemoRepository {
 
     Memo save(Memo memo);
 
-    Optional<Memo> findById(Long id);
-
     List<Memo> findAll();
+
+    Optional<Memo> findById(Long id);
 
     Memo updateContent(Long id, String content);
 

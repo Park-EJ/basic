@@ -40,6 +40,14 @@ public class MemoRepositoryImpl implements MemoRepository {
         return memo;
     }
 
+    @Override
+    public List<Memo> findAll() {
+        return jdbcTemplate.query(
+                "select * from memo",
+                (rs, rowNum) ->
+                        new Memo(rs.getLong("id"), rs.getString("content"))
+        );
+    }
 
     @Override
     public Optional<Memo> findById(Long id) {
@@ -50,15 +58,6 @@ public class MemoRepositoryImpl implements MemoRepository {
         );
 
         return memos.stream().findAny();
-    }
-
-    @Override
-    public List<Memo> findAll() {
-        return jdbcTemplate.query(
-                "select * from memo",
-                (rs, rowNum) ->
-                        new Memo(rs.getLong("id"), rs.getString("content"))
-        );
     }
 
     @Override
