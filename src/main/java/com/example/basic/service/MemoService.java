@@ -52,7 +52,7 @@ public class MemoService {
                 () -> new IllegalArgumentException("해당 id가 존재하지 않습니다.")
         );
 
-        Memo updatedMemo = memoRepository.updateContent(id, dto.getContent());
+        Memo updatedMemo = memoRepository.updateContent(memo.getId(), dto.getContent());
 
         return new MemoResponseDto(updatedMemo.getId(), updatedMemo.getContent());
     }
@@ -62,6 +62,6 @@ public class MemoService {
         Memo memo = memoRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 id가 존재하지 않습니다.")
         );
-        memoRepository.deleteById(id);
+        memoRepository.deleteById(memo.getId());
     }
 }
