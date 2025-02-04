@@ -29,12 +29,12 @@ public class MemoService {
     public List<MemoResponseDto> findAll() {
         List<Memo> memos = memoRepository.findAll();
 
-        List<MemoResponseDto> dtos = new ArrayList<>();
+        List<MemoResponseDto> lists = new ArrayList<>();
         for (Memo memo : memos) {
-            dtos.add(new MemoResponseDto(memo.getId(), memo.getContent()));
+            lists.add(new MemoResponseDto(memo.getId(), memo.getContent()));
         }
 
-        return dtos;
+        return lists;
     }
 
     @Transactional(readOnly = true)
